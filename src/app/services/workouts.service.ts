@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class WorkoutsService {
 
-  URL : string= 'http://localhost:3000/api/v1/workouts';
+  URL : string= 'http://localhost:3000';
   constructor(
     private _http : HttpClient
   ) 
@@ -18,6 +18,29 @@ export class WorkoutsService {
   getAllWorkouts() : Observable<any>{
     return this._http.get(this.URL)
   }
+
+  getOneWorkout(id : any) : Observable<any>{
+    return this._http.get(`${this.URL}/${id}`)
+  }
+
+  getWorkoutsPremiun(){
+    return this._http.get(`${this.URL}?premiun=true`)
+  }
+
+  postOneWorkout(body : any){
+    return this._http.post(`${this.URL}/workouts/add`, body)
+  }
+
+  patchOneWorkout(body : any, _id : any){
+    return this._http.patch(`${this.URL}/workouts/edit/${_id}`, body)
+
+  }
+
+  deleteOneWorkout(_id : any){
+    return this._http.delete(`${this.URL}/workouts/delete/${_id}`)
+
+  }
+
 
 
 

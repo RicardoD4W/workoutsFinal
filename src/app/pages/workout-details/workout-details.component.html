@@ -1,1 +1,82 @@
-<p>workout-details works!</p>
+<div class="flex items-center justify-center h-screen">
+  <div class="w-auto h-auto p-5 rounded shadow-2xl bg-cnyanza-200">
+    <div class="font-semibold text-center text-gray-400 uppercase">
+
+      <h2 class="text-3xl">{{ oneWorkout.nombre }}  </h2>
+    </div>
+
+    <main class="flex justify-center">
+      <img
+        class="object-fill w-[150px] md:w-[500px] "
+        src="{{ oneWorkout.imagen_url }}"
+        alt="{{ oneWorkout.nombre }}"
+        title="{{ oneWorkout.nombre }}"
+      />
+
+ 
+
+      <img class="md:w-[500px] w-[150px]" src="{{ oneWorkout.video_url}}" />
+    </main>
+
+    <main class="flex">
+      <article class="m-5 ">
+        <div class="p-1 text-center">
+          <a
+            class="text-blue-500"
+            href="{{ oneWorkout.video_url }}"
+            target="_blank"
+            >Video aquí</a
+          >
+        </div>
+        <div class="relative">
+          <svg
+            onclick="document.querySelector('#modal').classList.toggle('hidden')"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+            />
+          </svg>
+
+
+          <br>
+          
+          <div class="absolute top-0 hidden left-7" id="modal">
+            <p class="p-1 text-black bg-white rounded">
+              {{ oneWorkout.consejos }}
+            </p>
+          </div>
+        </div>
+        <p>
+          Equipamineto:
+          <span class="text-sm">{{ oneWorkout.equipamiento }}</span>
+        </p>
+        <br>
+        <p>
+          Descripcion: <span class="text-sm">{{ oneWorkout.descripcion }}</span>
+        </p>
+        <br>
+        <p>
+            Equipamineto:
+            <span class="text-sm">{{ oneWorkout.equipamiento }}</span>
+          </p>  
+          <br>
+      </article>
+
+
+
+          <article *ngFor="let gp of oneWorkout.grupo_muscular" class="flex items-center justify-center gap-3">
+              <p  class="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">{{gp}}</p>
+            </article>
+
+            
+    </main>
+  </div>
+</div>

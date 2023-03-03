@@ -1,1 +1,74 @@
-<p>delete-workout works!</p>
+<main class="mb-12">
+  <div
+    class="container flex flex-col items-center justify-center w-full mx-auto"
+  >
+    <ul class="flex flex-col">
+      <div
+        class="w-full px-4 py-5 mt-2 mb-2 bg-white border rounded-md shadow sm:px-6 dark:bg-gray-800"
+      >
+        <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-white">
+          Eliminar
+        </h3>
+        <div>
+          <p class="max-w-2xl p-1 mt-1 text-sm text-gray-500 dark:text-gray-200">
+            Aquí podrá eliminar las actividades que desee pulsando sobre el botón
+            de eliminar
+           
+          </p>
+          <div class="text-center">
+            <form>
+              <input type="text" (keyup)="filtrar($event)" placeholder="Busca por nombre" class="border border-1">
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <li
+        class="flex flex-row mb-2 border-gray-400"
+        *ngFor="let workout of workouts"
+      >
+        <div
+          class="w-[200px] m-1 flex items-center flex-1 p-4 transition duration-500 ease-in-out transform bg-white rounded-md shadow cursor-pointer select-none hover:-translate-y-1 hover:shadow-lg dark:bg-gray-800"
+        >
+          <div class="flex flex-col items-center justify-center w-10 h-10 mr-4">
+            <div class="relative block">
+              <img
+                alt="profil"
+                src="{{ workout.imagen_url }}"
+                class="object-cover >w-10 h-10 mx-auto rounded-full"
+              />
+            </div>
+          </div>
+          <div class="flex-1 pl-1 md:mr-16 w-[60px]">
+            <div class="font-medium dark:text-white">{{ workout.nombre }}</div>
+            <div
+              class="text-sm text-gray-600 truncate dark:text-gray-200 max-w-[250px]"
+            >
+              {{ workout.descripcion }}
+            </div>
+          </div>
+          <div class="invisible m-3 text-xs text-gray-600 sm:visible dark:text-gray-200">
+            {{
+              workout.premiun.toString() == "true" ? "Premiun" : "No Premiun"
+            }}
+          </div>
+          <div class="flex justify-end text-right w-22">
+            <button
+            (click)="delete(workout._id)"
+              class="flex items-center p-1 uppercase transition duration-200 ease-in border-2 border-red-700 rounded active:text-gray-200 active:border-red-600 active:bg-red-600 hover:bg-red-800 hover:text-white focus:outline-none"
+            >
+
+              Delete
+
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+              </svg>
+              
+            </button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</main>
