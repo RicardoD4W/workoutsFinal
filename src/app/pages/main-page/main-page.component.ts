@@ -32,6 +32,7 @@ export class MainPageComponent {
   next() {
     if (this.page + 4 >= this.workouts.length) return;
     this.page += 4;
+    this.getData();
   }
   previus() {
     if (this.page == 0) return;
